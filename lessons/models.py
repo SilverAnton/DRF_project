@@ -8,7 +8,7 @@ class Lesson(models.Model):
     description = models.TextField(verbose_name='Description')
     image = models.ImageField(upload_to='image/lesson', verbose_name='Image', blank=True, null=True)
     video_link = models.URLField(verbose_name='Video Link',  blank=True, null=True)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Course', related_name='lessons')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Course', related_name='lessons', null=True, blank=True)
 
     def __str__(self):
         return self.name
