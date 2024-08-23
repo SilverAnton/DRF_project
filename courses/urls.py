@@ -9,7 +9,5 @@ router = SimpleRouter()
 router.register("", CourseViewSet)
 
 app_name = CoursesConfig.name
-urlpatterns = [
-
-]
+urlpatterns = []
 urlpatterns += router.urls

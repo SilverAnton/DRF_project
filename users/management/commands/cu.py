@@ -1,15 +1,14 @@
-from users.models import User
 from django.core.management import BaseCommand
+
+from users.models import User
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
         user = User.objects.create(
-            email="Admin@user.com",
-            first_name="Admin",
+            email="Juser@mock.com",
+            first_name="New",
             last_name="User",
-            is_staff=True,
-            is_superuser=True,
         )
-        user.set_password("admin-user123")
+        user.set_password("password123")
         user.save()

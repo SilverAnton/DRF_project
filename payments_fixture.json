@@ -1,24 +1,24 @@
 [
 {
-  "model": "users.payment",
+  "model": "payments.payment",
   "pk": 1,
   "fields": {
     "user": 1,
     "date": "2024-08-08T13:05:30.011Z",
-    "course": 2,
+    "course": 1,
     "lesson": null,
     "amount": "1000.00",
     "payment_method": "cash"
   }
 },
 {
-  "model": "users.payment",
+  "model": "payments.payment",
   "pk": 2,
   "fields": {
     "user": 1,
     "date": "2024-08-08T13:06:33.640Z",
     "course": null,
-    "lesson": 2,
+    "lesson": 1,
     "amount": "500.00",
     "payment_method": "bank_transfer"
   }

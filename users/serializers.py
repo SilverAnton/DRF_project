@@ -1,16 +1,18 @@
 from rest_framework.serializers import ModelSerializer
-from users.models import Payment
+from rest_framework import serializers
 from users.models import User
 
 
-class UserSerializer(ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
-        fields = ("id", "email", "phone", "avatar", "country",)
+        fields = ("id", "email", "phone", "avatar", "country", "password")
 
-
-class PaymentSerializer(ModelSerializer):
-    class Meta:
-        model = Payment
-        fields = '__all__'
-
+    def create(self, validated_data):
+        user = User(email=validated_data["email"])
+        user.set_password(validated_data["password"])
+        user.is_active = True
+        user.save()
+        return user
