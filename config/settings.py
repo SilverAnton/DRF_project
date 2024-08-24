@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "courses",
     "lessons",
     "payments",
+    "subscriptions",
     "django_filters",
     "rest_framework_simplejwt",
 ]

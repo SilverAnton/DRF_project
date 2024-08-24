@@ -9,6 +9,7 @@ from rest_framework.generics import (
 from rest_framework.permissions import IsAuthenticated
 
 from lessons.models import Lesson
+from lessons.paginations import CustomLessonPagination
 from lessons.serializers import LessonSerializer
 from users.permissions import IsModeratorPermission, IsOwnerPermission
 
@@ -27,6 +28,7 @@ class LessonCreateApiView(CreateAPIView):
 class LessonListApiView(ListAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+    pagination_class = CustomLessonPagination
 
 
 class LessonRetrieveApiView(RetrieveAPIView):
