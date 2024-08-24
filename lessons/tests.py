@@ -14,7 +14,6 @@ class LessonAPITestCase(APITestCase):
         self.user = User.objects.create_user(
             email="test@example.com",
             password="password",
-            phone="1234567890",  # если нужно
         )
         self.client.force_authenticate(user=self.user)
 
