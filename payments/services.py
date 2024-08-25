@@ -25,7 +25,7 @@ def create_product(name, description):
 def create_price(product_id, amount):
     url = f"{STRIPE_API_BASE_URL}prices"
     data = {
-        "unit_amount": amount * 100,  # Convert to cents
+        "unit_amount": amount * 100,
         "currency": "usd",
         "product": product_id,
     }
