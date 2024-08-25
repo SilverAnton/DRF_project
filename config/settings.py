@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "drf_yasg",
     "users",
     "courses",
     "lessons",
@@ -146,3 +147,5 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     # "AUTH_HEADER_TYPES": ("Bearer",),
 }
+
+STRIPE_SECRET_KEY = "sk_test_51Prf2jHmJ8hmt3eFRZLxRRfymiSZ7Hz4eB3ZIC6An4TFlh1QrtuaTzPXSYpG9FepJ0RptOBKwS42XPmGpi2ikhp800hIxbVPcT"
