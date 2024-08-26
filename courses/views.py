@@ -4,12 +4,18 @@ from courses.models import Course
 from courses.paginations import CustomCoursePagination
 from courses.serializer import CourseSerializer
 from users.permissions import IsModeratorPermission, IsOwnerPermission
+from subscriptions.tasks import send_course_update_emails
 
 
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     pagination_class = CustomCoursePagination
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+        # Запуск асинхронной задачи после успешного обновления курса
+        send_course_update_emails.delay(course.id)
 
     def perform_create(self, serializer):
         course = serializer.save()

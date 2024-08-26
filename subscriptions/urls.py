@@ -6,5 +6,5 @@ from .views import CourseSubscriptionToggleAPIView
 
 app_name = SubscriptionsConfig.name
 urlpatterns = [
-    path("", CourseSubscriptionToggleAPIView.as_view(), name="course-subscribe"),
+    path("", CourseSubscriptionToggleAPIView.as_view(), name="course_subscribe"),
 ]
