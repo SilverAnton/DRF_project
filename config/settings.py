@@ -3,6 +3,7 @@ from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -13,7 +14,7 @@ SECRET_KEY = "django-insecure-zj@ywl065ipcun9rws38tr9hrgc$*32*fjd-n4rn*p)%#nwez^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -91,11 +92,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": os.getenv("ENGINE"),
-        "NAME": os.getenv("NAME"),
+        "NAME": os.getenv("POSTGRES_DB"),
         "USER": os.getenv("POSTGRES_USER"),
-        "PASSWORD": os.getenv("PASSWORD"),
-        "HOST": os.getenv("HOST"),
-        "PORT": os.getenv("PORT"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT"),
     }
 }
 
@@ -132,6 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = '/app/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -153,11 +155,10 @@ STRIPE_SECRET_KEY = "sk_test_51Prf2jHmJ8hmt3eFRZLxRRfymiSZ7Hz4eB3ZIC6An4TFlh1Qrt
 
 # Настройки для Celery
 
-# URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://localhost:6379'  # Например, Redis, который по умолчанию работает на порту 6379
 
-# URL-адрес брокера результатов, также Redis
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 
 # Часовой пояс для работы Celery
 CELERY_TIMEZONE = "UTC"
